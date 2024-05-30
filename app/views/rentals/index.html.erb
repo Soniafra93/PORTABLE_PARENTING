@@ -1,0 +1,30 @@
+<h1>My rentals</h1>
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Item</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+      <th>Status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @rentals.each do |rental| %>
+      <tr>
+        <td><%= rental.item.name %></td>
+        <td><%= rental.start_date %></td>
+        <td><%= rental.end_date %></td>
+        <td><%= rental.status %></td>
+        <td><%= link_to 'Show', rental %></td>
+        <td><%= link_to 'Edit', edit_item_rental_path(rental.item, rental) %></td>
+        <td><%= link_to 'Destroy', rental, data: { turbo_method: :delete, confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Back', items_path %>
