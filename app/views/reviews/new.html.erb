@@ -1,0 +1,14 @@
+<h1>New Review for <%= @item.name %></h1>
+
+<%= simple_form_for([@item, @item.reviews.build]) do |f| %>
+
+  <div class="form-inputs">
+    <%= f.input :content %>
+    <%= f.input :rating, collection: 1..5, prompt: 'Select Rating' %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, 'Finish' %>
+    <%= link_to 'Back', item_path(@item) %>
+  </div>
+<% end %>

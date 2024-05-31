@@ -3,4 +3,16 @@
 <p><%= number_to_currency(@item.price) %></p>
 
 <%= link_to 'Edit', edit_item_path(@item) %> |
-<%= link_to 'Back', items_path %>
+<%= link_to 'Back', items_path %> |
+
+<%= link_to 'Write a review', new_item_review_path(@item) %>
+
+<h2>Reviews</h2>
+<% @item.reviews.each do |review| %>
+  <p>
+    <strong><%= review.user.email %>:</strong>
+    <%= review.content %> (Rating: <%= review.rating %>)
+  </p>
+<% end %>
+
+<%= link_to 'Back to Items', items_path %>
