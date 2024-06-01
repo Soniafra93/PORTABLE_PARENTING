@@ -1,6 +1,35 @@
-<h1><%= @item.name %></h1>
-<p><%= @item.description %></p>
-<p><%= number_to_currency(@item.price) %></p>
+<div class="container my-5">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <h1 class="mb-3"><%= @item.name %></h1>
+      <p class="text-muted"><%= @item.description %></p>
+      <p class="h4 text-success"><%= number_to_currency(@item.price) %></p>
 
-<%= link_to 'Edit', edit_item_path(@item) %> |
-<%= link_to 'Back', items_path %>
+      <div class="mb-4">
+        <%= link_to 'Edit', edit_item_path(@item), class: 'btn btn-warning' %>
+        <%= link_to 'Back', items_path, class: 'btn btn-secondary' %>
+        <%= link_to 'Write a review', new_item_review_path(@item), class: 'btn btn-primary' %>
+      </div>
+
+      <h2 class="mt-5">Reviews</h2>
+      <% if @item.reviews.any? %>
+        <% @item.reviews.each do |review| %>
+          <div class="card mb-3">
+            <div class="card-body">
+              <h5 class="card-title"><%= review.user.email %></h5>
+              <p class="card-text"><%= review.content %></p>
+              <p class="card-text"><small class="text-muted">Rating: <%= review.rating %></small></p>
+            </div>
+          </div>
+        <% end %>
+      <% else %>
+        <p class="text-muted">No reviews yet.</p>
+      <% end %>
+
+      <div class="mt-4">
+        <%= link_to 'Back to Items', items_path, class: 'btn btn-secondary' %>
+      </div>
+    </div>
+  </div>
+</div>
+

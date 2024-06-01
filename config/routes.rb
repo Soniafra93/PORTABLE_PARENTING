@@ -13,6 +13,6 @@ Rails.application.routes.draw do
 
   resources :items do
     resources :rentals, only: [:new, :create, :edit, :update]
+    resources :reviews, only: [:new, :create]
   end
-
 end

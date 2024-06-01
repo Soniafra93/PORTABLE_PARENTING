@@ -1,24 +1,29 @@
-<h1>Rental Details</h1>
+<div class="container my-5">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <h1 class="mb-4">Rental Details</h1>
 
-<p>
-  <strong>Item:</strong>
-  <%= @rental.item.name %>
-</p>
+      <div class="card">
+        <div class="card-body">
+          <p class="card-text">
+            <strong>Item:</strong> <%= @rental.item.name %>
+          </p>
+          <p class="card-text">
+            <strong>Start Date:</strong> <%= @rental.start_date %>
+          </p>
+          <p class="card-text">
+            <strong>End Date:</strong> <%= @rental.end_date %>
+          </p>
+          <p class="card-text">
+            <strong>Status:</strong> <%= @rental.status %>
+          </p>
+        </div>
+        <div class="card-footer text-center">
+          <%= link_to 'Edit', edit_item_rental_path(@rental), class: 'btn btn-warning btn-sm' %>
+          <%= link_to 'Back', rentals_path, class: 'btn btn-secondary btn-sm ml-2' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-<p>
-  <strong>Start Date:</strong>
-  <%= @rental.start_date %>
-</p>
-
-<p>
-  <strong>End Date:</strong>
-  <%= @rental.end_date %>
-</p>
-
-<p>
-  <strong>Status:</strong>
-  <%= @rental.status %>
-</p>
-
-<%= link_to 'Edit', edit_item_rental_path(@rental) %> |
-<%= link_to 'Back', rentals_path %>
