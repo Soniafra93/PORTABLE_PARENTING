@@ -30,7 +30,7 @@ class ItemsController < ApplicationController
     if @item.update(item_params)
       redirect_to @item, notice: 'Item was successfully updated.'
     else
-      render :edit  
+      render :edit
     end
   end
 
@@ -46,6 +46,6 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:name, :description, :price)
+    params.require(:item).permit(:name, :description, :price, photos: [])
   end
 end
