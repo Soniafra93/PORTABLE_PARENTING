@@ -4,15 +4,21 @@
       <h1 class="mb-3"><%= @item.name %></h1>
       <p class="text-muted"><%= @item.description %></p>
       <p class="h4 text-success"><%= number_to_currency(@item.price) %></p>
-       <% if @item.photos.attached? %>
-      <% @item.photos.each do |photo| %>
-        <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-       <% end %>
+      <% if @item.photos.attached? %>
+        <% @item.photos.each do |photo| %>
+          <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+        <% end %>
       <% end %>
       <div class="mb-4">
         <%= link_to 'Edit', edit_item_path(@item), class: 'btn btn-warning' %>
         <%= link_to 'Back', items_path, class: 'btn btn-secondary' %>
-        <%= link_to 'Write a review', new_item_review_path(@item), class: 'btn btn-primary' %>
+        <button data-controller="toggle-form" data-action="click->toggle-form#fire" class="btn btn-primary">
+          Write a review
+        </button>
+      </div>
+
+      <div data-controller="toggle-form" data-toggle-form-target="togglableElement" class="d-none">
+        <%= render 'reviews/form', item: @item, review: Review.new %>
       </div>
 
       <h2 class="mt-5">Reviews</h2>
@@ -23,7 +29,6 @@
               <h5 class="card-title"><%= review.user.email %></h5>
               <p class="card-text"><%= review.content %></p>
               <p class="card-text"><small class="text-muted">Rating: <%= review.rating %></small></p>
-
             </div>
           </div>
         <% end %>
