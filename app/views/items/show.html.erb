@@ -1,5 +1,5 @@
 <div class="container my-5">
-  <div class="row">
+  <div class="row" data-controller="toggle-form">
     <div class="col-md-8 offset-md-2">
       <h1 class="mb-3"><%= @item.name %></h1>
       <p class="text-muted"><%= @item.description %></p>
@@ -12,7 +12,7 @@
       <div class="mb-4">
         <%= link_to 'Edit', edit_item_path(@item), class: 'btn btn-warning' %>
         <%= link_to 'Back', items_path, class: 'btn btn-secondary' %>
-        <button data-controller="toggle-form" data-action="click->toggle-form#fire" class="btn btn-primary">
+        <button  data-action="click->toggle-form#fire" class="btn btn-primary">
           Write a review
         </button>
       </div>
