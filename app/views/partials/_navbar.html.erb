@@ -24,7 +24,11 @@
             <a class="nav-link" href="#">🛒</a>
           </li>
           <li class="nav-item dropdown">
+            <% if user_signed_in? && current_user.photo.attached? %>
+            <%= cl_image_tag current_user.photo.key, height: 50, width: 50, crop: :fill, style:"border-radius: 50%; box-shadow: 0 2px 5px #17122B; border: white 2px solid;", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <% else %>
             <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="<%= asset_path('default-avatar.avif') %>" />
+            <% end %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Sign in", user_session_path, class: "dropdown-item" %>
               <%= link_to "Sign up", new_user_registration_path, class: "dropdown-item" %>
