@@ -1,11 +1,16 @@
 <%= render 'partials/navbar' %>
-<%= image_tag("image-1.png", class: "img-fluid w-100") %>
+
+<div class="relative-container">
+  <%= image_tag("image-1.png", class: "img-fluid w-100") %>
+  <span data-controller="typed" class="absolute-span typed-text">
+  </span>
+</div>
 <div class='container text-center mt-4'>
  <h1>HOW IT WORKS</h1>
  <div class="d-flex justify-content-around my-5" >
   <div><h2>Items</h2><p>dfsdafsdf dsfsda fsda fsda fsdaf sdaf sda</p></div>
-  <div><h2>sales</h2><p>sdasadf sadf sdaf sdaf sadf sdaf sda fsda f</p></div>
-  <div><h2>toys</h2><p>dsaf sdaf sdaf sad fsda fsda f sda fsad fs ad</p></div>
+  <div><h2>Sales</h2><p>sdasadf sadf sdaf sdaf sadf sdaf sda fsda f</p></div>
+  <div><h2>Toys</h2><p>dsaf sdaf sdaf sad fsda fsda f sda fsad fs ad</p></div>
  </div>
 </div>
 <%= render 'partials/footer' %>
