@@ -7,3 +7,18 @@ h1 {
 body {
   background-color: rgb(217, 243, 252);
 }
+
+.relative-container {
+  position: relative;
+}
+
+.absolute-span {
+  position: absolute;
+  top: 30%;
+  left: 40%;
+  transform: translate(-50%, -50%);
+}
+
+.typed-text {
+  font-size: 50px; /* Adjust the font size as needed */
+}
