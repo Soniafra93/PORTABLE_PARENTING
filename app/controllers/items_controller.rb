@@ -15,6 +15,12 @@ class ItemsController < ApplicationController
 
   def show
     @review = Review.new
+    @markers = [
+      {
+        lat: @item.latitude,
+        lng: @item.longitude
+      }
+    ]
   end
 
   def new
@@ -55,6 +61,6 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:name, :description, :price, photos: [])
+    params.require(:item).permit(:name, :description, :price, :address, photos: [])
   end
 end
