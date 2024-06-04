@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-sm-8">
+      <div id="items">
+        <% if @items.any? %>
+          <% @items.each do |item| %>
+            <div class="item">
+              <h4><%= link_to item.name, item_path(item) %></h4>
+              <p><%= item.description %></p>
+            </div>
+          <% end %>
+        <% else %>
+          <em>Sorry, no items were found.</em>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
