@@ -5,6 +5,14 @@ class ItemsController < ApplicationController
     @items = Item.all
   end
 
+  def search
+    if params[:query].present?
+      @items = Item.search_by_name_and_description(params[:query])
+    else
+      @items = Item.all
+    end
+  end
+
   def show
     @review = Review.new
   end
