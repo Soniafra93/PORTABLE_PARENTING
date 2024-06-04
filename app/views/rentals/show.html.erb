@@ -17,6 +17,9 @@
           <p class="card-text">
             <strong>Status:</strong> <%= @rental.status %>
           </p>
+          <p class="card-text">
+            <strong>Price:</strong> <%= @rental.item.price %>
+          </p>
         </div>
         <div class="card-footer text-center">
           <%= link_to 'Edit', edit_item_rental_path(@rental), class: 'btn btn-warning btn-sm' %>
@@ -26,4 +29,3 @@
     </div>
   </div>
 </div>
-

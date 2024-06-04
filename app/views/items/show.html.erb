@@ -12,7 +12,7 @@
       <% end %>
       <div class="mb-4">
         <%= link_to 'Edit', edit_item_path(@item), class: 'btn btn-warning' %>
-        <%= link_to 'Back', items_path, class: 'btn btn-secondary' %>
+        <%= link_to 'Rent this item', new_item_rental_path(@item), class: 'btn btn-secondary' %>
         <button  data-action="click->toggle-form#fire" class="btn btn-primary">
           Write a review
         </button>
@@ -61,6 +61,7 @@
 
       <div class="mt-4">
         <%= link_to 'Back to Items', items_path, class: 'btn btn-secondary' %>
+        <%= link_to "Home page", root_path, class: 'btn btn-primary'  %>
       </div>
     </div>
   </div>
