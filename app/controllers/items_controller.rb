@@ -18,7 +18,9 @@ class ItemsController < ApplicationController
     @markers = [
       {
         lat: @item.latitude,
-        lng: @item.longitude
+        lng: @item.longitude,
+        info_window_html: render_to_string(partial: "partials/info_window", locals: {item: @item}),
+        marker_html: render_to_string(partial: "partials/marker")
       }
     ]
   end
