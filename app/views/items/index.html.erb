@@ -1,6 +1,45 @@
 <div class="container my-5">
   <h1 class="mb-4">Items</h1>
 
+
+  <div class="row">
+    <div class="col-md-4 mb-4">
+      <div class="card" style="width: 18rem;">
+      <img class="card-img-top" src="<%= asset_path('stroller.jpg') %>" alt="Card image cap">
+      <div class="card-body">
+    <h5 class="card-title">Stroller</h5>
+    <p class="card-text">With smooth handling and ample storage, it's perfect for daily outings or travel.
+    Safe, reliable, and easy to use—reserve yours today!</p>
+    <a href="#" class="btn btn-primary">Rent</a>
+    </div>
+  </div>
+</div>
+
+    <div class="col-md-4 mb-4">
+<div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="<%= asset_path('kids_toys.jpg') %>" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">Toys</h5>
+    <p class="card-text"> From imaginative play to skill-building games, our toys spark creativity and joy in children of all ages.
+    Rent now and watch your little one's imagination soar!</p>
+    <a href="#" class="btn btn-primary">Rent</a>
+  </div>
+</div>
+</div>
+
+    <div class="col-md-4 mb-4">
+<div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="<%= asset_path('cradle.jpg') %>" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">Cradle</h5>
+    <p class="card-text"> Designed for safety and relaxation, our cradle provides a soothing environment for your baby's peaceful sleep.
+    Rent today and ensure your baby's sweet dreams every night!</p>
+    <a href="#" class="btn btn-primary">Rent</a>
+  </div>
+</div>
+</div>
+</div>
+
   <div class="mb-3">
     <%= link_to 'New Item', new_item_path, class: 'btn btn-primary' %>
   </div>
