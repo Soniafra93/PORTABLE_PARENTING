@@ -3,7 +3,6 @@
     <div class="col-md-8 offset-md-2">
       <h1 class="mb-3"><%= @item.name %></h1>
       <p class="text-muted"><%= @item.description %></p>
-      <p class="text-muted"><%= @item.address %></p>
       <p class="h4 text-success"><%= number_to_currency(@item.price) %></p>
       <% if @item.photos.attached? %>
         <% @item.photos.each do |photo| %>
@@ -33,7 +32,7 @@
           </div>
         <% end %>
       </div>
-      
+
       <div style="width: 100%; height: 600px;"
         data-controller="map"
         data-map-markers-value="<%= @markers.to_json %>"
