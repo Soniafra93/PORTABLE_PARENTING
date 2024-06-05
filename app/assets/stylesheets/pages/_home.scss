@@ -20,5 +20,31 @@ body {
 }
 
 .typed-text {
-  font-size: 50px; /* Adjust the font size as needed */
+  font-size: 40px; /* Adjust the font size as needed */
+}
+
+.banner {
+  background-size: cover;
+  background-image: url("image-1.png");
+  background-position: center;
+  padding: 150px 0;
+}
+
+.btn-flat {
+  color: white;
+  padding: 8px 24px;
+  border-radius: 4px;
+  background: #7f5abc;
+  transition: background 0.3s ease;
+}
+
+.lower-box {
+  background-color: rgba(253, 249, 230, 0.948);
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 16px;
+  padding: 16px;
 }
