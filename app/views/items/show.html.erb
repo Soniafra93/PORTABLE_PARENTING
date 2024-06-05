@@ -6,7 +6,7 @@
       <p class="h4 text-success"><%= number_to_currency(@item.price) %></p>
       <% if @item.photos.attached? %>
         <% @item.photos.each do |photo| %>
-          <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+          <%= cl_image_tag photo.key, height: 300, width: 400, class: 'mb-4', crop: :fill %>
         <% end %>
       <% end %>
       <div class="mb-4">
