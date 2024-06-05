@@ -12,7 +12,7 @@
 </div>
 <div class='container text-center mt-4'>
  <h1>HOW IT WORKS</h1>
- <div class="d-flex justify-content-between my-5" >
+ <div class="justify-content-between cards my-5" >
   <div>
     <h2><strong>Browse</strong></h2>
     <p>Check all our baby equipments!</p>
@@ -38,3 +38,35 @@
   </div>
 </div>
 <%= render 'partials/footer' %>
+
+        <%= simple_form_for(User.new, as: :user, url: registration_path(:user)) do |f| %>
+          <%= f.error_notification %>
+            <div class="form-inputs">
+              <%= f.input :first_name,
+                          required: true,
+                          autofocus: true,
+                          input_html: { autocomplete: "name" }%>
+              <%= f.input :last_name,
+                          required: true,
+                          autofocus: true,
+                          input_html: { autocomplete: "surname" }%>
+              <%= f.input :email,
+                          required: true,
+                          autofocus: true,
+                          input_html: { autocomplete: "email" }%>
+              <%= f.input :password,
+                          required: true,
+                          hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                          input_html: { autocomplete: "new-password" } %>
+              <%= f.input :password_confirmation,
+                          required: true,
+                          input_html: { autocomplete: "new-password" } %>
+              <%= f.input :photo, as: :file,
+                          required: false %>
+            </div>
+
+            <div class="form-actions">
+              <%= f.button :submit, "Sign up" %>
+            </div>
+        <% end %>
+        <%= render "devise/shared/links", resource_name: :user, devise_mapping: Devise.mappings[:user] %>
