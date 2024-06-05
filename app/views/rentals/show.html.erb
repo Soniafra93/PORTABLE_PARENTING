@@ -22,8 +22,12 @@
           </p>
         </div>
         <div class="card-footer text-center">
-          <%= link_to 'Edit', edit_item_rental_path(@rental), class: 'btn btn-warning btn-sm' %>
+          <%= link_to 'Edit', edit_item_rental_path(@rental.item, @rental), class: 'btn btn-warning btn-sm' %>
           <%= link_to 'Back', rentals_path, class: 'btn btn-secondary btn-sm ml-2' %>
+          <% if @rental.status == 'pending' && @rental.item.user == current_user %>
+            <%= link_to 'Approve', approve_rental_path(@rental), method: :patch, class: 'btn btn-success btn-sm' %>
+            <%= link_to 'Decline', decline_rental_path(@rental), method: :patch, class: 'btn btn-danger btn-sm ml-2' %>
+          <% end %>
         </div>
       </div>
     </div>

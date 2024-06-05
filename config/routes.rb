@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  resources :rentals, only: [:show, :destroy, :index]
+  resources :rentals, only: [:index, :show, :destroy] do
+    member do
+      patch 'approve'
+      patch 'decline'
+    end
+  end
   devise_for :users
   root to: "pages#home"
 
