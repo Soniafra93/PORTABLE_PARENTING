@@ -5,7 +5,7 @@ h1 {
 }
 
 body {
-  background-color: rgb(217, 243, 252);
+  background-color: rgb(253, 255, 226);
 }
 
 .relative-container {
@@ -39,12 +39,12 @@ body {
 }
 
 .lower-box {
-  background-color: rgba(253, 249, 230, 0.948);
+  background-color: rgb(254, 247, 201);
 }
 
 .cards {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   grid-gap: 16px;
   padding: 16px;
 }
