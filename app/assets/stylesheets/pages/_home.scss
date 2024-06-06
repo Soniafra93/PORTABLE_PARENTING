@@ -1,11 +1,11 @@
 // Specific CSS for your home-page
 h1 {
-  color: lightcoral;
+  color: $dark-pink;
   font-weight: 800;
 }
 
 body {
-  background-color: rgb(253, 255, 226);
+  background-color: $light-pink;
 }
 
 .relative-container {
@@ -34,12 +34,12 @@ body {
   color: white;
   padding: 8px 24px;
   border-radius: 4px;
-  background: #7f5abc;
+  background: $blue;
   transition: background 0.3s ease;
 }
 
 .lower-box {
-  background-color: rgb(254, 247, 201);
+  background-color: $light-blue;
 }
 
 .cards {
