@@ -22,9 +22,8 @@
           <td><%= rental.end_date %></td>
           <td><%= rental.status %></td>
           <td><%= link_to 'Show', rental, class: 'btn btn-info btn-sm' %></td>
-          <td><%= link_to 'Approve', approve_rental_path(rental), method: :patch, class: 'btn btn-success btn-sm', 'data-turbo-method': 'patch' %></td>
-          <td><%= link_to 'Decline', decline_rental_path(rental), method: :patch, class: 'btn btn-danger btn-sm' %></td>
-        </tr>
+          <td><%= link_to 'Approve', rental_approve_path(rental), class: 'btn btn-success btn-sm', data: {turbo_method: :patch} %></td>
+          <td><%= link_to 'Decline', rental_decline_path(rental), class: 'btn btn-danger btn-sm', data: {turbo_method: :patch} %></td>
       <% end %>
     </tbody>
   </table>
@@ -84,4 +83,8 @@
       <% end %>
     </tbody>
   </table>
+   <div class="mt-4">
+        <%= link_to 'Back to Items', items_path, class: 'btn btn-secondary' %>
+        <%= link_to "Home page", root_path, class: 'btn btn-primary'  %>
+      </div>
 </div>
