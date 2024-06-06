@@ -1,18 +1,15 @@
 Rails.application.routes.draw do
   resources :rentals, only: [:index, :show, :destroy] do
-    member do
-      patch 'approve'
-      patch 'decline'
-    end
+    patch 'approve', to: 'rentals#approve', as: 'approve'
+    patch 'decline', to: 'rentals#decline', as: 'decline'
+
   end
   devise_for :users
   root to: "pages#home"
 
-  get "up" => "rails/health#show", as: :rails_health_check
-
   resources :items do
     collection do
-      get 'search', to: 'items#search'
+      get 'search', to: 'items#index'
     end
     resources :rentals, only: [:new, :create, :edit, :update]
     resources :reviews, only: [:new, :create]

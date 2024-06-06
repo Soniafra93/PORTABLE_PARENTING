@@ -10,12 +10,6 @@
       <div class="form-group mb-3">
         <%= f.input :status, collection: ['pending', 'accepted', 'declined'], input_html: { class: 'form-control' } %>
       </div>
-    <% else %>
-      <%= f.hidden_field :status, value: 'pending' %>
-      <div class="form-group mb-3">
-        <label>Status</label>
-        <p>Pending</p>
-      </div>
     <% end %>
   </div>
 

@@ -8,20 +8,20 @@
     </button>
 
     <div class="collapse navbar-collapse w-100" id="navbarSupportedContent">
-      <%= form_with url: search_items_path, method: :get, class: "d-flex w-100" do %>
-        <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Type a keyword" %>
-         <%= submit_tag "Search", name: nil, class: "btn btn-flat" %>
+      <%= form_with url: items_path, method: :get, class: "d-flex w-100" do %>
+        <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Choose your destination" %>
+        <%= submit_tag "Search", name: nil, class: "btn btn-primary" %>
       <% end %>
       <ul class="navbar-nav me-auto">
-          <li class="nav-item active">
-            <%= link_to "🛒", rentals_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-          </li>
-          <li class="nav-item dropdown">
-            <% if user_signed_in? && current_user.photo.attached? %>
+        <li class="nav-item active">
+          <%= link_to "🛒", rentals_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+        </li>
+        <li class="nav-item dropdown">
+          <% if user_signed_in? && current_user.photo.attached? %>
             <%= cl_image_tag current_user.photo.key, height: 50, width: 50, crop: :fill, style:"border-radius: 50%; box-shadow: 0 2px 5px #17122B; border: white 2px solid;", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-            <% else %>
+          <% else %>
             <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="<%= asset_path('default-avatar.avif') %>" />
             <% end %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown" >
@@ -33,6 +33,9 @@
           </li>
           <!--li class="nav-item"-->
           <!--/li-->
+
+          
+
       </ul>
     </div>
   </div>
