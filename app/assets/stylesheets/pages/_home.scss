@@ -48,3 +48,18 @@ body {
   grid-gap: 16px;
   padding: 16px;
 }
+
+.form-login {
+  background: white;
+  padding: 10px 20px;
+  margin-top: 10px;
+  border-radius: 3px;
+}
+
+#exampleModal {
+  z-index: 10;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+}

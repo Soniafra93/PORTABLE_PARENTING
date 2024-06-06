@@ -1,5 +1,8 @@
-<div data-controller ='modal-sign-in'>
+<div data-controller='modal-sign-in'>
   <%= render 'partials/navbar' %>
+  <div class ="d-none" data-modal-sign-in-target="modal" id="modal">
+    <%= render 'partials/modal_sign_up' %>
+  </div>
 
   <div class="banner">
     <div class="container">
@@ -39,7 +42,5 @@
     </div>
   </div>
   <%= render 'partials/footer' %>
-  <div class ="d-none" data-modal-sign-in-target="modal">
-    <%= render 'partials/modal_sign_up' %>
-  </div>
+
 </div>

@@ -1,15 +1,21 @@
-<div class="container my-5">
+<div class="container my-4">
   <div class="row" data-controller="toggle-form">
     <div class="col-md-8 offset-md-2">
-      <h1 class="mb-3"><%= @item.name %></h1>
-      <p class="text-muted"><%= @item.description %></p>
-      <p class="h4 text-success"><%= number_to_currency(@item.price) %></p>
-      <% if @item.photos.attached? %>
-        <% @item.photos.each do |photo| %>
-          <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+      <h1 class="mb-3"><%= @item.name.capitalize %></h1>
+      <div class= "my-4 ">
+        <% if @item.photos.attached? %>
+          <% @item.photos.each do |photo| %>
+            <%= cl_image_tag photo.key, height: 400, width: 600, crop: :fill %>
+          <% end %>
         <% end %>
-      <% end %>
-      <div class="mb-4">
+      </div>
+      <div class= "my-4 ">
+        <p><strong>Description: </strong></p>
+        <p class="text-muted"><%= @item.description %></p>
+        <p><strong>Price: </strong></p>
+        <p class="h4 text-success"><%= number_to_currency(@item.price) %></p>
+      </div>
+      <div class="my-6">
         <%= link_to 'Edit', edit_item_path(@item), class: 'btn btn-warning' %>
         <%= link_to 'Rent this item', new_item_rental_path(@item), class: 'btn btn-secondary' %>
         <button  data-action="click->toggle-form#fire" class="btn btn-primary">
@@ -18,7 +24,7 @@
       </div>
 
       <!-- This is the element to be toggled -->
-      <div data-toggle-form-target="togglableElement" class="d-none">
+      <div data-toggle-form-target="togglableElement" class="d-none mt-4">
         <%= simple_form_for([@item, @review]) do |f| %>
           <div class="form-group">
             <%= f.input :content, input_html: { class: 'form-control' }, wrapper_html: { class: 'mb-3' }, label: "Your Review" %>
