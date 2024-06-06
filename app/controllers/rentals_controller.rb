@@ -1,8 +1,9 @@
 class RentalsController < ApplicationController
   before_action :set_rental, only: [:show, :edit, :update, :destroy]
   before_action :set_item, only: [:new, :create]
-  before_action :authorize_owner!, only: [:edit, :update, :approve, :decline]
+  before_action :authorize_owner!, only: [:edit, :update]
   before_action :set_rental_id, only: [:approve, :decline]
+  before_action :authorize_owner_update, only: [:approve, :decline]
 
   def index
     @pending_rentals = current_user.items.map(&:rentals).flatten.select { |r| r.status == 'pending' }
@@ -74,6 +75,11 @@ class RentalsController < ApplicationController
 
   def authorize_owner!
     set_rental
+    redirect_to root_path, alert: 'You are not authorized to perform this action.' unless current_user.owner_of?(@rental.item)
+  end
+
+  def authorize_owner_update
+    set_rental_id
     redirect_to root_path, alert: 'You are not authorized to perform this action.' unless current_user.owner_of?(@rental.item)
   end
 
