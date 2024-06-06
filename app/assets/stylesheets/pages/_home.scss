@@ -1,11 +1,11 @@
 // Specific CSS for your home-page
 h1 {
-  color: lightcoral;
+  color: $dark-pink;
   font-weight: 800;
 }
 
 body {
-  background-color: rgb(217, 243, 252);
+  background-color: $light-pink;
 }
 
 .relative-container {
@@ -34,17 +34,32 @@ body {
   color: white;
   padding: 8px 24px;
   border-radius: 4px;
-  background: #7f5abc;
+  background: $blue;
   transition: background 0.3s ease;
 }
 
 .lower-box {
-  background-color: rgba(253, 249, 230, 0.948);
+  background-color: $light-blue;
 }
 
 .cards {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   grid-gap: 16px;
   padding: 16px;
+}
+
+.form-login {
+  background: white;
+  padding: 10px 20px;
+  margin-top: 10px;
+  border-radius: 3px;
+}
+
+#exampleModal {
+  z-index: 10;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
 }
