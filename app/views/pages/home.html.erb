@@ -1,43 +1,45 @@
-<%= render 'partials/navbar' %>
+<div data-controller ='modal-sign-in'>
+  <%= render 'partials/navbar' %>
 
-<div class="banner">
-  <div class="container">
-    <span data-controller="typed" class="absolute-span typed-text">
-    </span>
-    <div class="mt-5 mx-5">
-      <h1><strong>Portable Parenting</strong></h1>
-      <%= link_to "Check our items!", items_path, class: "btn btn-flat mt-3"%>
+  <div class="banner">
+    <div class="container">
+      <span data-controller="typed" class="absolute-span typed-text">
+      </span>
+      <div class="mt-5 mx-5">
+        <h1><strong>Portable Parenting</strong></h1>
+        <%= link_to "Check our items!", items_path, class: "btn btn-flat mt-3"%>
+      </div>
     </div>
   </div>
-</div>
-<div class='container text-center mt-4'>
- <h1>HOW IT WORKS</h1>
- <div class="justify-content-between cards my-5" >
-  <div>
-    <h2><strong>Browse</strong></h2>
-    <p>Check all our baby equipments!</p>
+  <div class='container text-center mt-4'>
+  <h1>HOW IT WORKS</h1>
+  <div class="justify-content-between cards my-5" >
+    <div>
+      <h2><strong>Browse</strong></h2>
+      <p>Check all our baby equipments!</p>
+    </div>
+    <div>
+      <h2><strong>Reserve</strong></h2>
+      <p>Make a request for your high quality, sanitized baby gear</p>
+    </div>
+    <div>
+      <h2><strong>Enjoy</strong></h2>
+      <p>Avoid the hassle of travelling with bulky equipments</p>
+    </div>
   </div>
-  <div>
-    <h2><strong>Reserve</strong></h2>
-    <p>Make a request for your high quality, sanitized baby gear</p>
   </div>
-  <div>
-    <h2><strong>Enjoy</strong></h2>
-    <p>Avoid the hassle of travelling with bulky equipments</p>
+  <div class='container text-center my-4 lower-box'>
+    <div class="mt-3">
+      <h2>Some of our Items</h2>
+    </div>
+    <div class=" justify-content-between cards">
+      <% @items.each do |item| %>
+        <%= render 'partials/card', item: item %>
+      <% end %>
+    </div>
   </div>
- </div>
-</div>
-<div class='container text-center my-4 lower-box'>
-  <div class="mt-3">
-    <h2>Some of our Items</h2>
+  <%= render 'partials/footer' %>
+  <div class ="d-none" data-modal-sign-in-target="modal">
+    <%= render 'partials/modal_sign_up' %>
   </div>
-  <div class=" justify-content-between cards">
-    <% @items.each do |item| %>
-      <%= render 'partials/card', item: item %>
-    <% end %>
-  </div>
-</div>
-<%= render 'partials/footer' %>
-<div class ="d-none" data-modal-sign-in-target="modal">
-  <%= render 'partials/modal_sign_up' %>
 </div>
