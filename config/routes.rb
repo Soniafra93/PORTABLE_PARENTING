@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   resources :items do
     collection do
-      get 'search', to: 'items#search'
+      get 'search', to: 'items#index'
     end
     resources :rentals, only: [:new, :create, :edit, :update]
     resources :reviews, only: [:new, :create]

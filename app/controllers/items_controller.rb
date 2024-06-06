@@ -3,14 +3,8 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.available_for_rent
-  end
-
-  def search
-    if params[:query].present?
-      @items = Item.search_by_name_and_description(params[:query])
-    else
-      @items = Item.all
-    end
+    @items = @items.where("category ILIKE ?", "%#{params[:category]}%") if params[:category].present?
+    @items = @items.search_by_name_and_description(params[:query]) if params[:query].present?
   end
 
   def show
@@ -63,6 +57,6 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:name, :description, :price, :address, photos: [])
+    params.require(:item).permit(:name, :description, :price, :address, :category, photos: [])
   end
 end
