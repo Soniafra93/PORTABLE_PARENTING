@@ -3,7 +3,6 @@ class Item < ApplicationRecord
   has_many :rentals, dependent: :destroy
   has_many :reviews, dependent: :destroy
   has_many_attached :photos
-  #has_one :address
   geocoded_by :address
 
   validates :name, :description, :price, :photos, presence: true
