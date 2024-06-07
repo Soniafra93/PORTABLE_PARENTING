@@ -3,15 +3,18 @@
   <div class ="d-none" data-modal-sign-in-target="modal" id="modal">
     <%= render 'partials/modal_sign_up' %>
   </div>
+   <div class ="d-none" data-modal-sign-in-target="sign" id="modal1">
+    <%= render 'partials/modal_sign_in' %>
+  </div>
 <div class="banner">
   <div class="container">
     <span data-controller="typed" class="absolute-span typed-text">
     </span>
     <div class="mt-5 mx-5">
       <%= link_to "Check our items!", items_path, class: "btn btn-flat mt-3"%>
-
     </div>
   </div>
+</div>
   <div class='container text-center mt-4'>
   <h1>HOW IT WORKS</h1>
   <div class="justify-content-between cards my-5" >
