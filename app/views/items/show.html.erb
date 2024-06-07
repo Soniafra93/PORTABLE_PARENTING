@@ -1,21 +1,36 @@
 <div class="container my-4">
-  <div class="row" data-controller="toggle-form">
-    <div class="col-md-8 offset-md-2">
-      <h1 class="mb-3"><%= @item.name.capitalize %></h1>
-      <div class= "my-4 ">
-        <% if @item.photos.attached? %>
-          <% @item.photos.each do |photo| %>
-            <%= cl_image_tag photo.key, height: 400, width: 600, crop: :fill %>
-          <% end %>
-        <% end %>
+  <div class="row my-3" data-controller="toggle-form">
+    <div class="col-md-8 offset-md-2 bg-primary rounded">
+      <h1 class="my-3"><%= @item.name.capitalize %></h1>
+      <div class= "my-4 text-center">
+        <div id="carouselExample" class="carousel slide">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <% if @item.photos.attached? %>
+                <% @item.photos.each do |photo| %>
+                  <%= cl_image_tag photo.key, height: 400, class: "img-fluid rounded", crop: :fill %>
+                <% end %>
+              <% end %>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class= "my-4 ">
+      <div class= "my-4 mx-2">
         <p><strong>Description: </strong></p>
         <p class="text-muted"><%= @item.description %></p>
         <p><strong>Price: </strong></p>
         <p class="h4 text-success"><%= number_to_currency(@item.price) %></p>
       </div>
-      <div class="mb-4">
+      <div class="my-4 mx-3">
+        <%= link_to "Home page", root_path, class: 'btn btn-primary'  %>
         <% if current_user.owner_of?(@item) %>
           <%= link_to 'Edit', edit_item_path(@item), class: 'btn btn-warning' %>
         <% end %>
@@ -27,51 +42,48 @@
         </button>
       </div>
       <% unless current_user.owner_of?(@item) %>
-      <!-- This is the element to be toggled -->
-      <div data-toggle-form-target="togglableElement" class="d-none mt-4">
-        <%= simple_form_for([@item, @review]) do |f| %>
-          <div class="form-group">
-            <%= f.input :content, input_html: { class: 'form-control' }, wrapper_html: { class: 'mb-3' }, label: "Your Review" %>
-          </div>
-          <div class="form-group">
-            <%= f.input :rating, collection: 1..5, prompt: 'Select Rating', input_html: { class: 'form-control' }, wrapper_html: { class: 'mb-3' }, label: "Rating" %>
-          </div>
-          <div class="form-actions d-flex justify-content-between">
-            <%= f.button :submit, 'Finish', class: 'btn btn-success' %>
-            <%= link_to 'Back', item_path(@item), class: 'btn btn-secondary' %>
-          </div>
-        <% end %>
-      </div>
+    </div>
+     <!-- This is the element to be toggled -->
+    <div data-toggle-form-target="togglableElement" class="d-none mt-4">
+      <%= simple_form_for([@item, @review]) do |f| %>
+        <div class="form-group">
+          <%= f.input :content, input_html: { class: 'form-control' }, wrapper_html: { class: 'mb-3' }, label: "Your Review" %>
+        </div>
+        <div class="form-group">
+          <%= f.input :rating, collection: 1..5, prompt: 'Select Rating', input_html: { class: 'form-control' }, wrapper_html: { class: 'mb-3' }, label: "Rating" %>
+        </div>
+        <div class="form-actions d-flex justify-content-between">
+          <%= f.button :submit, 'Finish', class: 'btn btn-success' %>
+          <%= link_to 'Back', item_path(@item), class: 'btn btn-secondary' %>
+        </div>
       <% end %>
-      <div style="width: 100%; height: 600px;"
-        data-controller="map"
-        data-map-markers-value="<%= @markers.to_json %>"
-        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-      </div>
-
-      <h2 class="mt-5">Reviews</h2>
-      <% if @item.reviews.any? %>
-        <% @item.reviews.each do |review| %>
-          <div class="card mb-3">
-            <div class="card-body">
-              <% if review.user %>
-                <h5 class="card-title"><%= review.user.email %></h5>
-              <% else %>
-                <h5 class="card-title">Anonymous</h5>
-              <% end %>
-              <p class="card-text"><%= review.content %></p>
-              <p class="card-text"><small class="text-muted">Rating: <%= review.rating %></small></p>
-            </div>
+    </div>
+    <% end %>
+    <div style="width: 100%; height: 600px;"
+      data-controller="map"
+      data-map-markers-value="<%= @markers.to_json %>"
+      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
+    <h6 class="mt-5"><strong>Reviews: </strong></h6>
+    <% if @item.reviews.any? %>
+      <% @item.reviews.each do |review| %>
+        <div class="card mb-3">
+          <div class="card-body">
+            <% if review.user %>
+              <h5 class="card-title"><%= review.user.email %></h5>
+            <% else %>
+              <h5 class="card-title">Anonymous</h5>
+            <% end %>
+            <p class="card-text"><%= review.content %></p>
+            <p class="card-text"><small class="text-muted">Rating: <%= review.rating %></small></p>
           </div>
-        <% end %>
-      <% else %>
-        <p class="text-muted">No reviews yet.</p>
+        </div>
       <% end %>
-
-      <div class="mt-4">
-        <%= link_to 'Back to Items', items_path, class: 'btn btn-secondary' %>
-        <%= link_to "Home page", root_path, class: 'btn btn-primary'  %>
-      </div>
+    <% else %>
+      <p class="text-muted">There are no reviews yet.</p>
+    <% end %>
+    <div class="my-4">
+      <%= link_to 'Back to Items', items_path, class: 'btn btn-secondary' %>
     </div>
   </div>
 </div>
