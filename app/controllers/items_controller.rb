@@ -2,9 +2,21 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
 
   def index
-    @items = Item.available_for_rent
-    @items = @items.where("category ILIKE ?", "%#{params[:category]}%") if params[:category].present?
-    @items = @items.search_by_name_and_description(params[:query]) if params[:query].present?
+    @categories = Item.distinct.pluck(:category)
+    @items = if params[:category].present? && params[:category] != "All"
+               Item.where(category: params[:category]).available_for_rent
+             else
+               Item.available_for_rent
+             end
+  end
+
+  def search
+    if params[:query].present?
+      @items = Item.search_by_name_and_description(params[:query])
+    else
+      @items = Item.all
+    end
+    @categories = Item.distinct.pluck(:category)
   end
 
   def show
