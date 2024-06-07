@@ -1,17 +1,18 @@
 .orange_button,
 .teal_button,
 .crimson_button,
-.light_green_button {
+.light-green-button {
   display: inline-block;
   border: none;
   color: #fff;
   text-align: center;
   font-size: 14px;
-  padding: 8px 16px;
+  padding: 8px 18px;
   transition: all 150ms ease-in-out;
   cursor: pointer;
   margin: 5px;
   border-radius: 10px;
+  text-decoration: none;
 }
 
 .orange_button {
@@ -56,7 +57,7 @@
   }
 }
 
-.light_green_button {
+.light-green-button {
   border-color: #badfd7;
   box-shadow:
     0 0 40px 40px #badfd7 inset,
