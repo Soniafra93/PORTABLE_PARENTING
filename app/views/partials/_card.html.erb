@@ -5,7 +5,8 @@
     <img class="card-img-top" src="<%= asset_path('default-avatar.avif') %>" alt="Card image cap">
   <% end %>
   <div class="card-trip-infos">
-    <div>
+    <div class="card-trip-infos-inner">
+      <%# <h2><%= link_to item.name, item_path(item) %>
       <h2><%= item.name %></h2>
       <p><%= item.description %></p>
     </div>
