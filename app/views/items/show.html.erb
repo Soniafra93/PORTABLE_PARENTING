@@ -5,22 +5,22 @@
       <div class= "my-4 text-center">
         <div id="carouselExample" class="carousel slide">
           <div class="carousel-inner">
-            <div class="carousel-item active">
-              <% if @item.photos.attached? %>
-                <% @item.photos.each do |photo| %>
+            <% if @item.photos.attached? %>
+              <% @item.photos.each do |photo| %>
+                <div class="carousel-item active">
                   <%= cl_image_tag photo.key, height: 400, class: "img-fluid rounded", crop: :fill %>
-                <% end %>
+                </div>
               <% end %>
-              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Previous</span>
-              </button>
-              <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Next</span>
-              </button>
-            </div>
+            <% end %>
           </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+          </button>
         </div>
       </div>
       <div class= "my-4 mx-2">
@@ -30,14 +30,14 @@
         <p class="h4 text-success"><%= number_to_currency(@item.price) %></p>
       </div>
       <div class="my-4 mx-3">
-        <%= link_to "Home page", root_path, class: 'btn btn-primary'  %>
+        <%= link_to "Home page", root_path, class: 'btn btn-flat'%>
         <% if current_user.owner_of?(@item) %>
-          <%= link_to 'Edit', edit_item_path(@item), class: 'btn btn-warning' %>
+          <%= link_to 'Edit', edit_item_path(@item), class: 'btn btn-danger' %>
         <% end %>
         <% unless current_user.owner_of?(@item) %>
-          <%= link_to 'Rent this item', new_item_rental_path(@item), class: 'btn btn-secondary' %>
+          <%= link_to 'Rent this item', new_item_rental_path(@item), class: 'btn btn-danger' %>
         <% end %>
-        <button data-action="click->toggle-form#fire" class="btn btn-primary">
+        <button data-action="click->toggle-form#fire" class="btn btn-warning">
           Write a review
         </button>
       </div>
@@ -83,7 +83,7 @@
       <p class="text-muted">There are no reviews yet.</p>
     <% end %>
     <div class="my-4">
-      <%= link_to 'Back to Items', items_path, class: 'btn btn-secondary' %>
+      <%= link_to 'Back to Items', items_path, class: 'btn btn-flat' %>
     </div>
   </div>
 </div>
