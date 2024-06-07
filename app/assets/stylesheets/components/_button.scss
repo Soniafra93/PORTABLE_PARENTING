@@ -17,56 +17,40 @@
 
 .orange_button {
   border-color: #ffb713;
-  box-shadow:
-    0 0 40px 40px #ffb713 inset,
-    0 0 0 0 #ffb713;
+  box-shadow: 0 0 40px 40px #ffb713 inset, 0 0 0 0 #ffb713;
 
   &:hover {
-    box-shadow:
-      0 0 10px 0 #ffb713 inset,
-      0 0 10px 4px #ffb713;
+    box-shadow: 0 0 10px 0 #ffb713 inset, 0 0 10px 4px #ffb713;
     color: #333;
   }
 }
 
 .teal_button {
   border-color: #5fbfc1;
-  box-shadow:
-    0 0 40px 40px #5fbfc1 inset,
-    0 0 0 0 #5fbfc1;
+  box-shadow: 0 0 40px 40px #5fbfc1 inset, 0 0 0 0 #5fbfc1;
 
   &:hover {
-    box-shadow:
-      0 0 10px 0 #5fbfc1 inset,
-      0 0 10px 4px #5fbfc1;
+    box-shadow: 0 0 10px 0 #5fbfc1 inset, 0 0 10px 4px #5fbfc1;
     color: #333;
   }
 }
 
 .crimson_button {
   border-color: #c17779;
-  box-shadow:
-    0 0 40px 40px #c17779 inset,
-    0 0 0 0 #c17779;
+  box-shadow: 0 0 40px 40px #c17779 inset, 0 0 0 0 #c17779;
 
   &:hover {
-    box-shadow:
-      0 0 10px 0 #c17779 inset,
-      0 0 10px 4px #c17779;
+    box-shadow: 0 0 10px 0 #c17779 inset, 0 0 10px 4px #c17779;
     color: #333;
   }
 }
 
 .light-green-button {
   border-color: #badfd7;
-  box-shadow:
-    0 0 40px 40px #badfd7 inset,
-    0 0 0 0 #badfd7;
+  box-shadow: 0 0 40px 40px #badfd7 inset, 0 0 0 0 #badfd7;
 
   &:hover {
-    box-shadow:
-      0 0 10px 0 #badfd7 inset,
-      0 0 10px 4px #badfd7;
+    box-shadow: 0 0 10px 0 #badfd7 inset, 0 0 10px 4px #badfd7;
     color: #333;
   }
 }

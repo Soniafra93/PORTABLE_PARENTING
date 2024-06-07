@@ -1,23 +1,38 @@
 <div class="container my-4">
-  <div class="row" data-controller="toggle-form">
-    <div class="col-md-8 offset-md-2">
-      <h1 class="mb-3"><%= @item.name.capitalize %></h1>
-      <div class= "my-4 ">
-        <% if @item.photos.attached? %>
-          <% @item.photos.each do |photo| %>
-            <%= cl_image_tag photo.key, height: 400, width: 600, crop: :fill %>
-          <% end %>
-        <% end %>
+  <div class="row my-3" data-controller="toggle-form">
+    <div class="col-md-8 offset-md-2 bg-primary rounded">
+      <h1 class="my-3"><%= @item.name.capitalize %></h1>
+      <div class= "my-4 text-center">
+        <div id="carouselExample" class="carousel slide">
+          <div class="carousel-inner">
+            <% if @item.photos.attached? %>
+              <% @item.photos.each do |photo| %>
+                <div class="carousel-item active">
+                  <%= cl_image_tag photo.key, height: 400, class: "img-fluid rounded", crop: :fill %>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+          </button>
+        </div>
       </div>
-      <div class= "my-4 ">
+      <div class= "my-4 mx-2">
         <p><strong>Description: </strong></p>
         <p class="text-muted"><%= @item.description %></p>
         <p><strong>Price: </strong></p>
-        <p class="h4 text-success"><%= number_to_currency(@item.price) %></p>
+        <p class="text-success"><%= number_to_currency(@item.price) %></p>
       </div>
-      <div class="mb-4">
+      <div class="my-4 mx-3">
+        <%= link_to "Home page", root_path, class: 'teal_button'%>
         <% if current_user.owner_of?(@item) %>
-          <%= link_to 'Edit', edit_item_path(@item), class: 'btn btn-warning' %>
+          <%= link_to 'Edit', edit_item_path(@item), class: 'btn btn-danger' %>
         <% end %>
         <% unless current_user.owner_of?(@item) %>
           <%= link_to 'Rent this item', new_item_rental_path(@item), class: 'crimson_button' %>
@@ -27,29 +42,31 @@
         </button>
       </div>
       <% unless current_user.owner_of?(@item) %>
-      <!-- This is the element to be toggled -->
-      <div data-toggle-form-target="togglableElement" class="d-none mt-4">
-        <%= simple_form_for([@item, @review]) do |f| %>
-          <div class="form-group">
-            <%= f.input :content, input_html: { class: 'form-control' }, wrapper_html: { class: 'mb-3' }, label: "Your Review" %>
-          </div>
-          <div class="form-group">
-            <%= f.input :rating, collection: 1..5, prompt: 'Select Rating', input_html: { class: 'form-control' }, wrapper_html: { class: 'mb-3' }, label: "Rating" %>
-          </div>
-          <div class="form-actions d-flex justify-content-between">
-            <%= f.button :submit, 'Finish', class: 'teal_button' %>
-            <%= link_to 'Back', item_path(@item), class: 'crimson_button' %>
-          </div>
-        <% end %>
-      </div>
+     <!-- This is the element to be toggled -->
+        <div data-toggle-form-target="togglableElement" class="d-none py-4 px-3 bg-primary rounded">
+          <%= simple_form_for([@item, @review]) do |f| %>
+            <div class="form-group">
+              <%= f.input :content, input_html: { class: 'form-control' }, wrapper_html: { class: 'mb-3' }, label: "Your Review" %>
+            </div>
+            <div class="form-group">
+              <%= f.input :rating, collection: 1..5, prompt: 'Select Rating', input_html: { class: 'form-control' }, wrapper_html: { class: 'mb-3' }, label: "Rating" %>
+            </div>
+            <div class="form-actions d-flex justify-content-between">
+              <%= f.button :submit, 'Finish', class: 'teal_button' %>
+              <%= link_to 'Back', item_path(@item), class: 'crimson_button' %>
+            </div>
+            </div>
+          <% end %>
+        </div>
       <% end %>
-      <div style="width: 100%; height: 600px;"
-        data-controller="map"
-        data-map-markers-value="<%= @markers.to_json %>"
-        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-      </div>
-
-      <h2 class="mt-5">Reviews</h2>
+    <div style="width: 100%; height: 600px;"
+      data-controller="map"
+      data-map-markers-value="<%= @markers.to_json %>"
+      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
+      class ="bg-primary">
+    </div>
+    <div class="col-md-8 offset-md-2 bg-primary rounded">
+      <h6 class="mt-5"><strong>Reviews: </strong></h6>
       <% if @item.reviews.any? %>
         <% @item.reviews.each do |review| %>
           <div class="card mb-3">
@@ -65,12 +82,10 @@
           </div>
         <% end %>
       <% else %>
-        <p class="text-muted">No reviews yet.</p>
+        <p class="text-muted">There are no reviews yet.</p>
       <% end %>
-
-      <div class="mt-4">
+      <div class="my-4">
         <%= link_to 'Back to Items', items_path, class: 'crimson_button' %>
-        <%= link_to "Home page", root_path, class: 'teal_button'  %>
       </div>
     </div>
   </div>

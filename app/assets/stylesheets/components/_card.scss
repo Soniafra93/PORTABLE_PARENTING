@@ -1,7 +1,7 @@
 .card-trip {
   overflow: hidden;
   background: white;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 15px 35px rgba(50, 50, 93, 0.1);
 }
 
 .card-trip > img {
@@ -35,4 +35,9 @@
   right: 16px;
   top: -20px;
   width: 40px;
+}
+
+.card-trip-infos-inner h2 {
+  color: black;
+  text-decoration: none;
 }
