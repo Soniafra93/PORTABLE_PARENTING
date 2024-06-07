@@ -26,7 +26,7 @@
             <% end %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown" >
               <%# <%= link_to "Sign in", user_session_path, class: "dropdown-item"  %>
-              <button  data-action="click->modal-sign-in#fire" class="dropdown-item">Sign in</button>
+              <button  data-action="click->modal-sign-in#fire" class="dropdown-item">Sign up</button>
               <button  data-action="click->modal-sign-in#toggle" class="dropdown-item">Log in</button>
               <%= link_to 'Log out', destroy_user_session_path, data: { turbo_method: :delete }, class: "dropdown-item" %>
             </div>
