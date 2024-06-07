@@ -1,6 +1,8 @@
 <div class="card-trip my-3 card">
-  <% item.photos.each do |photo| %>
-    <%= cl_image_tag photo.key %>
+  <% if item.photos.attached? %>
+    <%= image_tag item.photos.first.variant(resize_to_fill: [300, 300]).processed, class: "card-img-top", alt: "Card image cap" %>
+  <% else %>
+    <img class="card-img-top" src="<%= asset_path('default-avatar.avif') %>" alt="Card image cap">
   <% end %>
   <div class="card-trip-infos">
     <div>
