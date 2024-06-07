@@ -20,9 +20,9 @@
           <%= link_to 'Edit', edit_item_path(@item), class: 'btn btn-warning' %>
         <% end %>
         <% unless current_user.owner_of?(@item) %>
-          <%= link_to 'Rent this item', new_item_rental_path(@item), class: 'btn btn-secondary' %>
+          <%= link_to 'Rent this item', new_item_rental_path(@item), class: 'crimson_button' %>
         <% end %>
-        <button data-action="click->toggle-form#fire" class="btn btn-primary">
+        <button data-action="click->toggle-form#fire" class="teal_button">
           Write a review
         </button>
       </div>
@@ -37,8 +37,8 @@
             <%= f.input :rating, collection: 1..5, prompt: 'Select Rating', input_html: { class: 'form-control' }, wrapper_html: { class: 'mb-3' }, label: "Rating" %>
           </div>
           <div class="form-actions d-flex justify-content-between">
-            <%= f.button :submit, 'Finish', class: 'btn btn-success' %>
-            <%= link_to 'Back', item_path(@item), class: 'btn btn-secondary' %>
+            <%= f.button :submit, 'Finish', class: 'teal_button' %>
+            <%= link_to 'Back', item_path(@item), class: 'crimson_button' %>
           </div>
         <% end %>
       </div>
@@ -69,8 +69,8 @@
       <% end %>
 
       <div class="mt-4">
-        <%= link_to 'Back to Items', items_path, class: 'btn btn-secondary' %>
-        <%= link_to "Home page", root_path, class: 'btn btn-primary'  %>
+        <%= link_to 'Back to Items', items_path, class: 'crimson_button' %>
+        <%= link_to "Home page", root_path, class: 'teal_button'  %>
       </div>
     </div>
   </div>
