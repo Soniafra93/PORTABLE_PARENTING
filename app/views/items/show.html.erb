@@ -44,7 +44,7 @@
       <% unless current_user.owner_of?(@item) %>
     </div>
      <!-- This is the element to be toggled -->
-    <div data-toggle-form-target="togglableElement" class="d-none mt-4">
+    <div data-toggle-form-target="togglableElement" class="d-none mt-4 col-md-8 offset-md-2 bg-primary rounded">
       <%= simple_form_for([@item, @review]) do |f| %>
         <div class="form-group">
           <%= f.input :content, input_html: { class: 'form-control' }, wrapper_html: { class: 'mb-3' }, label: "Your Review" %>
@@ -64,26 +64,28 @@
       data-map-markers-value="<%= @markers.to_json %>"
       data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
     </div>
-    <h6 class="mt-5"><strong>Reviews: </strong></h6>
-    <% if @item.reviews.any? %>
-      <% @item.reviews.each do |review| %>
-        <div class="card mb-3">
-          <div class="card-body">
-            <% if review.user %>
-              <h5 class="card-title"><%= review.user.email %></h5>
-            <% else %>
-              <h5 class="card-title">Anonymous</h5>
-            <% end %>
-            <p class="card-text"><%= review.content %></p>
-            <p class="card-text"><small class="text-muted">Rating: <%= review.rating %></small></p>
+    <div class="col-md-8 offset-md-2 bg-primary rounded">
+      <h6 class="mt-5"><strong>Reviews: </strong></h6>
+      <% if @item.reviews.any? %>
+        <% @item.reviews.each do |review| %>
+          <div class="card mb-3">
+            <div class="card-body">
+              <% if review.user %>
+                <h5 class="card-title"><%= review.user.email %></h5>
+              <% else %>
+                <h5 class="card-title">Anonymous</h5>
+              <% end %>
+              <p class="card-text"><%= review.content %></p>
+              <p class="card-text"><small class="text-muted">Rating: <%= review.rating %></small></p>
+            </div>
           </div>
-        </div>
+        <% end %>
+      <% else %>
+        <p class="text-muted">There are no reviews yet.</p>
       <% end %>
-    <% else %>
-      <p class="text-muted">There are no reviews yet.</p>
-    <% end %>
-    <div class="my-4">
-      <%= link_to 'Back to Items', items_path, class: 'btn btn-flat' %>
+      <div class="my-4">
+        <%= link_to 'Back to Items', items_path, class: 'btn btn-flat' %>
+      </div>
     </div>
   </div>
 </div>
