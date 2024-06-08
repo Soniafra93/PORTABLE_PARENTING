@@ -1,7 +1,7 @@
 <div class='container my-4 position-fixed'id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
   <div class="modal-body form-login ">
     <button  data-action="click->modal-sign-in#toggle" class="dropdown-item" id="close-button-1">Close</button>
-    <%= simple_form_for(User.new, as: :user, url: registration_path(:user)) do |f| %>
+    <%= simple_form_for(User.new, as: :user, url: session_path(:user)) do |f| %>
       <%= f.error_notification %>
         <div class="form-inputs">
           <%= f.input :email,
