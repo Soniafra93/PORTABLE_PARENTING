@@ -1,92 +1,97 @@
 <div class="container my-5">
-  <h1 class="mb-4">Items to Approve</h1>
+  <h1 class="mb-4"><strong>My Rentals</strong></h1>
+  <div class="bg-primary rounded py-2 px-2">
+    <h1 class="mb-4">Items to Approve</h1>
 
-  <table class="table table-striped table-hover">
-    <thead class="thead-dark">
-      <tr>
-        <th>Item</th>
-        <th>Renter</th>
-        <th>Start Date</th>
-        <th>End Date</th>
-        <th>Status</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @pending_rentals.each do |rental| %>
+    <table class="table table-striped table-hover">
+      <thead class="thead-dark">
         <tr>
-          <td><%= rental.item.name %></td>
-          <td><%= rental.user.email %></td>
-          <td><%= rental.start_date %></td>
-          <td><%= rental.end_date %></td>
-          <td><%= rental.status %></td>
-          <td class="button-cell"><%= link_to 'Show', rental, class: 'orange_button' %></td>
-          <td class="button-cell"><%= link_to 'Approve', rental_approve_path(rental), class: 'teal_button', data: {turbo_method: :patch} %></td>
-          <td class="button-cell"><%= link_to 'Decline', rental_decline_path(rental), class: 'crimson_button', data: { turbo_method: :patch } %></td>
+          <th>Item</th>
+          <th>Renter</th>
+          <th>Start Date</th>
+          <th>End Date</th>
+          <th>Status</th>
+          <th colspan="3"></th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+      </thead>
 
-  <h1 class="mb-4">Approved Items</h1>
+      <tbody>
+        <% @pending_rentals.each do |rental| %>
+          <tr>
+            <td><%= rental.item.name %></td>
+            <td><%= rental.user.email %></td>
+            <td><%= rental.start_date %></td>
+            <td><%= rental.end_date %></td>
+            <td><%= rental.status %></td>
+            <td class="button-cell"><%= link_to 'Show', rental, class: 'orange_button' %></td>
+            <td class="button-cell"><%= link_to 'Approve', rental_approve_path(rental), class: 'teal_button', data: {turbo_method: :patch} %></td>
+            <td class="button-cell"><%= link_to 'Decline', rental_decline_path(rental), class: 'crimson_button', data: { turbo_method: :patch } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="bg-primary rounded py-2 px-2 my-4">
+    <h1 class="mb-4">Approved Items</h1>
 
-  <table class="table table-striped table-hover">
-    <thead class="thead-dark">
-      <tr>
-        <th>Item</th>
-        <th>Renter</th>
-        <th>Start Date</th>
-        <th>End Date</th>
-        <th>Status</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @approved_rentals.each do |rental| %>
+    <table class="table table-striped table-hover">
+      <thead class="thead-dark">
         <tr>
-          <td><%= rental.item.name %></td>
-          <td><%= rental.user.email %></td>
-          <td><%= rental.start_date %></td>
-          <td><%= rental.end_date %></td>
-          <td><%= rental.status %></td>
-          <td class="button-cell"><%= link_to 'Show', rental, class: 'orange_button' %></td>
+          <th>Item</th>
+          <th>Renter</th>
+          <th>Start Date</th>
+          <th>End Date</th>
+          <th>Status</th>
+          <th colspan="3"></th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+      </thead>
 
-  <h1 class="mb-4">Items Being Rented</h1>
+      <tbody>
+        <% @approved_rentals.each do |rental| %>
+          <tr>
+            <td><%= rental.item.name %></td>
+            <td><%= rental.user.email %></td>
+            <td><%= rental.start_date %></td>
+            <td><%= rental.end_date %></td>
+            <td><%= rental.status %></td>
+            <td class="button-cell"><%= link_to 'Show', rental, class: 'orange_button' %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="bg-primary rounded py-2 px-2">
+    <h1 class="mb-4">Items Being Rented</h1>
 
-  <table class="table table-striped table-hover">
-    <thead class="thead-dark">
-      <tr>
-        <th>Item</th>
-        <th>Owner</th>
-        <th>Start Date</th>
-        <th>End Date</th>
-        <th>Status</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @renter_rentals.each do |rental| %>
+    <table class="table table-striped table-hover">
+      <thead class="thead-dark">
         <tr>
-          <td><%= rental.item.name %></td>
-          <td><%= rental.item.user.email %></td>
-          <td><%= rental.start_date %></td>
-          <td><%= rental.end_date %></td>
-          <td><%= rental.status %></td>
-          <td class="button-cell"><%= link_to 'Show', rental, class: 'orange_button' %></td>
+          <th>Item</th>
+          <th>Owner</th>
+          <th>Start Date</th>
+          <th>End Date</th>
+          <th>Status</th>
+          <th colspan="3"></th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+      </thead>
+
+      <tbody>
+        <% @renter_rentals.each do |rental| %>
+          <tr>
+            <td><%= rental.item.name %></td>
+            <td><%= rental.item.user.email %></td>
+            <td><%= rental.start_date %></td>
+            <td><%= rental.end_date %></td>
+            <td><%= rental.status %></td>
+            <td class="button-cell"><%= link_to 'Show', rental, class: 'orange_button' %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 
   <div class="mt-4">
     <%= link_to 'Back to Items', items_path, class: 'crimson_button' %>
-    <%= link_to "Home page", items_path, class: 'teal_button' %>
+    <%= link_to "Home page", root_path, class: 'teal_button' %>
   </div>
 </div>
