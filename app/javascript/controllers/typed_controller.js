@@ -8,6 +8,7 @@ export default class extends Controller {
       strings: ["Travel lightly with your family.", "No more heavy luggages!",
       "Traveling made easy with Portable Parenting!"],
       typeSpeed: 100,
+      showCursor: false,
     })
   }
 }
