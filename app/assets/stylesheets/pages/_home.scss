@@ -17,13 +17,25 @@ body {
 
 .absolute-span {
   position: absolute;
-  top: 30%;
-  left: 40%;
+  top: 35%;
+  left: 38%;
   transform: translate(-50%, -50%);
 }
 
 .typed-text {
-  font-size: 40px; /* Adjust the font size as needed */
+  font-size: 40px;
+  text-decoration: none;
+  border: none;
+}
+
+.typed-cursor, .typed-cursor::before {
+  text-decoration: none;
+  border: none;
+}
+
+
+*, *::before, *::after {
+  box-sizing: border-box;
 }
 
 .banner {
@@ -39,6 +51,11 @@ body {
   border-radius: 4px;
   background: $blue;
   transition: background 0.3s ease;
+}
+
+
+.lower-box {
+  background-color: white;
 }
 
 .cards {
