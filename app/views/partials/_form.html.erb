@@ -1,20 +1,22 @@
-<%= simple_form_for [item, rental] do |f| %>
-  <div class="form-inputs">
-    <div class="form-group mb-3">
-      <%= f.input :start_date, input_html: { class: 'form-control' } %>
-    </div>
-    <div class="form-group mb-3">
-      <%= f.input :end_date, input_html: { class: 'form-control' } %>
-    </div>
-    <% if current_user.owner_of?(item) %>
+<div class="bg-primary rounded py-2 px-2 rounded">
+  <%= simple_form_for [item, rental] do |f| %>
+    <div class="form-inputs">
       <div class="form-group mb-3">
-        <%= f.input :status, collection: ['pending', 'accepted', 'declined'], input_html: { class: 'form-control' } %>
+        <%= f.input :start_date, input_html: { class: 'form-control' } %>
       </div>
-    <% end %>
-  </div>
+      <div class="form-group mb-3">
+        <%= f.input :end_date, input_html: { class: 'form-control' } %>
+      </div>
+      <% if current_user.owner_of?(item) %>
+        <div class="form-group mb-3">
+          <%= f.input :status, collection: ['pending', 'accepted', 'declined'], input_html: { class: 'form-control' } %>
+        </div>
+      <% end %>
+    </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, class: 'btn btn-success' %>
-    <%= link_to 'Back', rentals_path, class: 'btn btn-secondary ml-2' %>
-  </div>
-<% end %>
+    <div class="form-actions">
+      <%= f.button :submit, class: 'btn teal_button' %>
+      <%= link_to 'Back', rentals_path, class: 'btn crimson_button ml-2' %>
+    </div>
+  <% end %>
+</div>
