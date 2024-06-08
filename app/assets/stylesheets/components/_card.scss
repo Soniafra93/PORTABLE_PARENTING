@@ -1,13 +1,18 @@
+.card-wrapper {
+  padding: 10px;
+}
+
 .card-trip {
   overflow: hidden;
   background: white;
-  box-shadow: 0 15px 35px rgba(50, 50, 93, 0.1);
+  border: none;
 }
 
-.card-trip > img {
+.card-trip .card-img-top {
   height: 200px;
   width: 100%;
   object-fit: cover;
+  border-radius: 15px;
 }
 
 .card-trip h2 {
@@ -37,7 +42,11 @@
   width: 40px;
 }
 
-.card-trip-infos-inner h2 {
+.card-trip-infos-inner .item-name {
   color: black;
   text-decoration: none;
+}
+
+.card-trip-infos-inner .item-description {
+  color: #555;
 }
