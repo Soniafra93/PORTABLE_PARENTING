@@ -41,15 +41,25 @@ body {
   transition: background 0.3s ease;
 }
 
-.lower-box {
-  background-color: white;
-}
-
 .cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 16px;
-  padding: 16px;
+  padding: 0; /* Remove padding */
+}
+
+.bg-light-pink {
+  background-color: $light-pink;
+}
+
+.bg-white {
+  background-color: white;
+}
+
+.rounded-corners {
+  border-radius: 15px;
+  overflow: hidden;
+  padding: 20px;
 }
 
 .form-login {

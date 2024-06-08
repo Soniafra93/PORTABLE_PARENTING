@@ -1,47 +1,47 @@
 <div data-controller='modal-sign-in'>
   <%= render 'partials/navbar' %>
-  <div class ="d-none" data-modal-sign-in-target="modal" id="modal">
+  <div class="d-none" data-modal-sign-in-target="modal" id="modal">
     <%= render 'partials/modal_sign_up' %>
   </div>
-   <div class ="d-none" data-modal-sign-in-target="sign" id="modal1">
+  <div class="d-none" data-modal-sign-in-target="sign" id="modal1">
     <%= render 'partials/modal_sign_in' %>
   </div>
-<div class="banner">
-  <div class="container">
-    <span data-controller="typed" class="absolute-span typed-text">
-    </span>
-    <div class="mt-5 mx-5">
-      <%= link_to "Check our items!", items_path, class: "btn btn-flat mt-3"%>
+  <div class="banner">
+    <div class="container">
+      <span data-controller="typed" class="absolute-span typed-text"></span>
+      <div class="mt-5 mx-5">
+        <%= link_to "Check our items!", items_path, class: "btn btn-flat mt-3" %>
+      </div>
     </div>
   </div>
-</div>
   <div class='container text-center mt-4'>
-  <h1>HOW IT WORKS</h1>
-  <div class="justify-content-between cards my-5" >
-    <div>
-      <h2><strong>Browse</strong></h2>
-      <p>Check all our baby equipments!</p>
-    </div>
-    <div>
-      <h2><strong>Reserve</strong></h2>
-      <p>Make a request for your high quality, sanitized baby gear</p>
-    </div>
-    <div>
-      <h2><strong>Enjoy</strong></h2>
-      <p>Avoid the hassle of travelling with bulky equipments</p>
+    <h1>HOW IT WORKS</h1>
+    <div class="justify-content-between cards my-5 bg-light-pink">
+      <div>
+        <h2><strong>Browse</strong></h2>
+        <p>Check all our baby equipments!</p>
+      </div>
+      <div>
+        <h2><strong>Reserve</strong></h2>
+        <p>Make a request for your high quality, sanitized baby gear</p>
+      </div>
+      <div>
+        <h2><strong>Enjoy</strong></h2>
+        <p>Avoid the hassle of travelling with bulky equipments</p>
+      </div>
     </div>
   </div>
-  </div>
-  <div class='container text-center my-4 lower-box rounded'>
+  <div class='container text-center my-4'>
     <div class="mt-3">
-      <h2>Some of our Items</h2>
+      <h2 class='mb-4'>Some of our Items</h2>
     </div>
-    <div class=" justify-content-between cards">
+    <div class="justify-content-between cards rounded-corners bg-white">
       <% @items.each do |item| %>
-        <%= render 'partials/card', item: item %>
+        <div class="card-wrapper">
+          <%= render 'partials/card', item: item %>
+        </div>
       <% end %>
     </div>
   </div>
   <%= render 'partials/footer' %>
-
 </div>
