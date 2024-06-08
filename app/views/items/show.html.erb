@@ -37,9 +37,11 @@
         <% unless current_user.owner_of?(@item) %>
           <%= link_to 'Rent this item', new_item_rental_path(@item), class: 'crimson_button' %>
         <% end %>
-        <button data-action="click->toggle-form#fire" class="teal_button">
+        <% unless current_user.owner_of?(@item) %>
+          <button data-action="click->toggle-form#fire" class="teal_button">
           Write a review
         </button>
+        <% end %>
       </div>
       <% unless current_user.owner_of?(@item) %>
      <!-- This is the element to be toggled -->
