@@ -1,0 +1,5 @@
+<% if user_signed_in? && current_user.notifications.where(read: [false, nil]).count > 0 %>
+  <%= link_to notifications_path, class: "nav-link" do %>
+    <span class="badge bg-danger"><%= current_user.notifications.where(read: [false, nil]).count %></span>
+  <% end %>
+<% end %>

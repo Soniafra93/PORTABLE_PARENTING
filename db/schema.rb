@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_06_172727) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_09_092016) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -57,6 +57,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_06_172727) do
     t.index ["user_id"], name: "index_items_on_user_id"
   end
 
+  create_table "notifications", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.text "message"
+    t.boolean "read"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_notifications_on_user_id"
+  end
+
   create_table "rentals", force: :cascade do |t|
     t.date "start_date"
     t.date "end_date"
@@ -65,6 +74,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_06_172727) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "status", default: "pending", null: false
+    t.text "notification"
     t.index ["item_id"], name: "index_rentals_on_item_id"
     t.index ["user_id"], name: "index_rentals_on_user_id"
   end
@@ -97,6 +107,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_06_172727) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "items", "users"
+  add_foreign_key "notifications", "users"
   add_foreign_key "rentals", "items"
   add_foreign_key "rentals", "users"
   add_foreign_key "reviews", "items"

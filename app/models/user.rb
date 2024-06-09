@@ -8,6 +8,7 @@ class User < ApplicationRecord
     has_many :rentals, dependent: :destroy
     has_many :reviews, dependent: :destroy
     has_one_attached :photo
+    has_many :notifications, dependent: :destroy
 
     def owner_of?(item)
       item.user_id == id
