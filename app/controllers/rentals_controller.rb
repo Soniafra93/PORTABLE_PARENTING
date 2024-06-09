@@ -24,6 +24,7 @@ class RentalsController < ApplicationController
     @rental.item = @item
 
     if @rental.save
+      @item.user.notifications.create(message: "New rental request for #{@item.name}")
       redirect_to rentals_path, notice: 'Rental was successfully created and is pending approval.'
     else
       render :new
@@ -48,11 +49,13 @@ class RentalsController < ApplicationController
 
   def approve
     @rental.update(status: 'accepted')
+    @rental.user.notifications.create(message: "Your rental request for #{@rental.item.name} has been accepted.")
     redirect_to @rental, notice: 'Rental was approved.'
   end
 
   def decline
     if @rental.update(status: 'declined')
+      @rental.user.notifications.create(message: "Your rental request for #{@rental.item.name} has been declined.")
       redirect_to rentals_path, notice: 'Rental was successfully declined.'
     else
       redirect_to rentals_path, alert: 'Error declining rental.'

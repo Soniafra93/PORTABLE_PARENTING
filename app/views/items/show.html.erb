@@ -32,7 +32,7 @@
       <div class="my-4 mx-3">
         <%= link_to "Home page", root_path, class: 'teal_button'%>
         <% if current_user.owner_of?(@item) %>
-          <%= link_to 'Edit', edit_item_path(@item), class: 'btn btn-danger' %>
+          <%= link_to 'Edit', edit_item_path(@item), class: 'crimson_button' %>
         <% end %>
         <% unless current_user.owner_of?(@item) %>
           <%= link_to 'Rent this item', new_item_rental_path(@item), class: 'crimson_button' %>

@@ -90,6 +90,26 @@
     </table>
   </div>
 
+  <div class="bg-primary rounded py-2 px-2 my-4">
+    <h1 class="mb-4">Notifications</h1>
+
+    <% if current_user.notifications.any? %>
+      <ul class="list-group">
+        <% current_user.notifications.order(created_at: :desc).each do |notification| %>
+          <li class="list-group-item">
+            <%= notification.message %>
+            <% if !notification.read? %>
+              <span class="badge bg-danger">New</span>
+            <% end %>
+            <%= link_to 'Mark as read', mark_as_read_notification_path(id: notification.id), data: { turbo_method: :patch }, class: 'light-green-button float-end' %>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>No notifications.</p>
+    <% end %>
+  </div>
+
   <div class="mt-4">
     <%= link_to 'Back to Items', items_path, class: 'crimson_button' %>
     <%= link_to "Home page", root_path, class: 'teal_button' %>
