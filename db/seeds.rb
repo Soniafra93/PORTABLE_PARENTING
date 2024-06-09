@@ -76,6 +76,15 @@ baby_toys_data = {
 users = User.all
 puts "Created #{users.count} users."
 
+# Predefined addresses for baby shops
+addresses = [
+  "123 Baby Lane, Springfield, IL, 62701, USA",
+  "456 Little Street, Denver, CO, 80203, USA",
+  "789 Infant Avenue, Austin, TX, 73301, USA",
+  "101 Toddler Road, Orlando, FL, 32801, USA",
+  "202 Nursery Way, San Francisco, CA, 94102, USA"
+]
+
 # Seed items
 categories.each do |category|
   category_data = case category
@@ -91,7 +100,7 @@ categories.each do |category|
       name: name,
       description: category_data[:descriptions][i],
       price: Faker::Commerce.price,
-      address: Faker::Address.full_address,
+      address: addresses[i % addresses.length],
       category: category,
       user: users.sample
     }
