@@ -40,7 +40,7 @@
         <% unless current_user.owner_of?(@item) %>
           <button data-action="click->toggle-form#fire" class="teal_button">
           Write a review
-        </button>
+          </button>
         <% end %>
       </div>
       <% unless current_user.owner_of?(@item) %>
@@ -61,14 +61,19 @@
           <% end %>
         </div>
       <% end %>
-    <div style="width: 100%; height: 600px;"
-      data-controller="map"
-      data-map-markers-value="<%= @markers.to_json %>"
-      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
-      class ="bg-primary">
+    <div class="col-md-8 offset-md-2  bg-primary rounded pt-5">
+      <div class="text-align-center">
+        <h3>Item Location:</h3>
+      </div>
+      <div style="width: 100%; height: 600px;"
+        data-controller="map"
+        data-map-markers-value="<%= @markers.to_json %>"
+        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
+        class ="bg-primary mb-5">
+      </div>
     </div>
-    <div class="col-md-8 offset-md-2 bg-primary rounded">
-      <h6 class="mt-5"><strong>Reviews: </strong></h6>
+    <div class="col-md-8 bg-primary rounded">
+      <h3 class="mt-5"><strong>Reviews: </strong></h3>
       <% if @item.reviews.any? %>
         <% @item.reviews.each do |review| %>
           <div class="card mb-3">
