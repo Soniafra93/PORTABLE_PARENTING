@@ -101,7 +101,7 @@
             <%= notification.message %>
             <% if !notification.read? %>
               <span class="badge bg-danger">New</span>
-              <%= link_to 'Mark as read', mark_as_read_notification_path(id: notification.id), data: { turbo_method: :patch }, class: 'light-green-button float-end' %>
+              <%= link_to 'Mark as read', mark_as_read_notification_path(id: notification.id), data: { turbo_method: :patch }, class: 'teal_button float-end' %>
             <% end %>
           </li>
         <% end %>
