@@ -10,7 +10,7 @@
     <div class="collapse navbar-collapse w-100" id="navbarSupportedContent">
       <%= form_with url: items_path, method: :get, class: "d-flex w-100" do %>
         <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Choose your destination" %>
-        <%= submit_tag "Search", name: nil, class: "btn btn-primary" %>
+        <%= submit_tag "Search", name: nil, class: "teal_button ml-8" %>
       <% end %>
       <ul class="navbar-nav me-auto">
         <li class="nav-item active d-flex align-items-center">
