@@ -30,9 +30,26 @@
 .card-trip .card-trip-infos {
   padding: 16px;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: flex-end;
+  height: 100%;
   position: relative;
+}
+
+.card-trip .card-trip-infos-inner {
+  flex: 1;
+}
+
+.card-trip .card-trip-pricing {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+.card-trip .d-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .card-trip-infos .card-trip-user {
@@ -49,4 +66,16 @@
 
 .card-trip-infos-inner .item-description {
   color: #555;
+}
+
+.rounded-circle {
+  border-radius: 50%;
+}
+
+.shadow {
+  box-shadow: 0 2px 5px #17122b;
+}
+
+.border {
+  border: white 2px solid;
 }
