@@ -78,11 +78,11 @@ puts "Created #{users.count} users."
 
 # Predefined addresses for baby shops
 addresses = [
-  "123 Baby Lane, Springfield, IL, 62701, USA",
-  "456 Little Street, Denver, CO, 80203, USA",
-  "789 Infant Avenue, Austin, TX, 73301, USA",
-  "101 Toddler Road, Orlando, FL, 32801, USA",
-  "202 Nursery Way, San Francisco, CA, 94102, USA"
+  "Paris",
+  "London",
+  "New York",
+  "Amsterdam",
+  "Boston"
 ]
 
 # Seed items
