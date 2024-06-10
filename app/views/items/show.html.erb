@@ -61,11 +61,13 @@
           <% end %>
         </div>
       <% end %>
-    <div style="width: 100%; height: 600px;"
-      data-controller="map"
-      data-map-markers-value="<%= @markers.to_json %>"
-      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
-      class ="bg-primary">
+    <div class="col-md-8 offset-md-2 bg-primary rounded">
+      <div style="width: 100%; height: 600px;"
+        data-controller="map"
+        data-map-markers-value="<%= @markers.to_json %>"
+        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
+        class ="bg-primary">
+      </div>
     </div>
     <div class="col-md-8 offset-md-2 bg-primary rounded">
       <h6 class="mt-5"><strong>Reviews: </strong></h6>
