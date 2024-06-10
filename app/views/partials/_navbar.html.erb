@@ -34,9 +34,7 @@
           <% else %>
             <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="<%= asset_path('default-avatar.avif') %>" />
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-
               <button data-action="click->modal-sign-in#toggle" class="dropdown-item">Log in</button>
-
               <button data-action="click->modal-sign-in#fire" class="dropdown-item">Sign up</button>
             </div>
           <% end %>
