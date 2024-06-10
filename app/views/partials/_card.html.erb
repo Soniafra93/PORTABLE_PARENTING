@@ -9,7 +9,9 @@
       <h2 class="item-name"><%= item.name %></h2>
       <p class="item-description"><%= item.description %></p>
     </div>
-    <h2 class="card-trip-pricing"><%= item.price %> €</h2>
+    <div class='d-flex '>
+      <h2 class="card-trip-pricing"><%= item.price %> €</h2>
+    </div>
     <% if user_signed_in? && current_user.photo.attached? %>
       <%= cl_image_tag current_user.photo.key, height: 50, width: 50, crop: :fill, style: "border-radius: 50%; box-shadow: 0 2px 5px #17122B; border: white 2px solid;", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
     <% else %>
