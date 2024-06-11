@@ -1,26 +1,38 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+
 
 require 'open-uri'
 require 'faker'
 
 puts "Destroying all items..."
 Item.destroy_all
+# puts "Destroying all users..."
+# User.destroy_all
 
 # Read the text file and split it into a hash of labeled URLs
 image_file_path = File.join(Rails.root, 'app', 'assets', 'image_urls.txt')
 image_urls = {}
+
 File.readlines(image_file_path).each do |line|
   key, url = line.split(': ', 2)
   image_urls[key.strip] = url.strip
 end
+
+# Attaching users' photo to avatars
+# user_photos = [
+#   'https://res.cloudinary.com/dfq4g7tng/image/upload/v1718097954/person-5_cd2nfz.jpg',
+#   'https://res.cloudinary.com/dfq4g7tng/image/upload/v1718097953/person-4_tqooqu.jpg',
+#   'https://res.cloudinary.com/dfq4g7tng/image/upload/v1718097951/person-3_tmcwd4.jpg',
+#   'https://res.cloudinary.com/dfq4g7tng/image/upload/v1718097950/person-2_zvskex.jpg',
+#   'https://res.cloudinary.com/dfq4g7tng/image/upload/v1718097949/person-1_wdjvbd.jpg'
+# ]
+
+# users = User.all
+
+# users.each_with_index do |user, index|
+#   file = URI.open(user_photos[index])
+#     user.photo.attach(io: file, filename: "person-#{index + 1}.jpg")
+#     user.save!
+# end
 
 # Array of unique email addresses
 email_addresses = []
