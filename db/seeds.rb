@@ -91,10 +91,10 @@ puts "Created #{users.count} users."
 # Predefined addresses for baby shops
 addresses = [
   "Paris",
-  "London",
-  "New York",
-  "Amsterdam",
-  "Boston"
+  "Paris",
+  "Paris",
+  "Paris",
+  "Paris"
 ]
 
 # Seed items
