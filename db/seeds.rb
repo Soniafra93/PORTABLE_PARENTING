@@ -13,8 +13,6 @@ require 'faker'
 
 puts "Destroying all items..."
 Item.destroy_all
-# puts "Destroying all users..."
-# User.destroy_all
 
 # Read the text file and split it into a hash of labeled URLs
 image_file_path = File.join(Rails.root, 'app', 'assets', 'image_urls.txt')
@@ -42,13 +40,6 @@ User.create([
 ])
 
 # Attach avatar photos to users
-# users = User.all
-# user_1 = users[30]
-# file = URI.open('https://res.cloudinary.com/dfq4g7tng/image/upload/v1718097954/person-5_cd2nfz.jpg')
-# user_1.photo.attach(io: file, filename: 'person-1.jpeg')
-# user_1.save!
-
-# Attach avatar photos to users
 users = User.all
 
 user_photos = [
@@ -60,11 +51,14 @@ user_photos = [
 ]
 
 users.each_with_index do |user, index|
-  file = URI.open(user_photos[index])
+  if index < user_photos.length
+    file = URI.open(user_photos[index])
     user.photo.attach(io: file, filename: "person-#{index + 1}.jpeg")
     user.save!
+  end
 end
 
+puts "Created #{users.count} users."
 
 # Define categories as an array of strings
 categories = ['Strollers', 'Car Seats', 'High Chairs', 'Baby Carriers', 'Baby Toys']
@@ -100,9 +94,6 @@ baby_toys_data = {
   image_urls: ['baby_toys1', 'baby_toys2', 'baby_toys3', 'baby_toys4', 'baby_toys5']
 }
 
-users = User.all
-puts "Created #{users.count} users."
-
 # Predefined addresses for baby shops
 addresses = [
   "Paris",
@@ -132,21 +123,21 @@ categories.each do |category|
       user: users.sample
     }
 
-     # Attach random photos to the item
-     item_record = Item.new(item)
+    # Attach random photos to the item
+    item_record = Item.new(item)
 
-     image_key = category_data[:image_urls][i]
-     image_url = image_urls[image_key]
+    image_key = category_data[:image_urls][i]
+    image_url = image_urls[image_key]
 
-     if image_url.nil?
-       puts "Missing URL for key: #{image_key}"
-     else
-       puts "Creating item: #{name} in category #{category} with image URL: #{image_url}"
-       file = URI.open(image_url)
-       item_record.photos.attach(io: file, filename: File.basename(URI.parse(image_url).path), content_type: 'image/jpeg')
-       item_record.save
-     end
-   end
- end
+    if image_url.nil?
+      puts "Missing URL for key: #{image_key}"
+    else
+      puts "Creating item: #{name} in category #{category} with image URL: #{image_url}"
+      file = URI.open(image_url)
+      item_record.photos.attach(io: file, filename: File.basename(URI.parse(image_url).path), content_type: 'image/jpeg')
+      item_record.save
+    end
+  end
+end
 
- puts "Created #{Item.count} items."
+puts "Created #{Item.count} items."
