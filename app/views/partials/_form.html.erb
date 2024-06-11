@@ -1,11 +1,11 @@
 <div class="bg-primary rounded py-2 px-2 rounded">
-  <%= simple_form_for [item, rental] do |f| %>
+  <%= simple_form_for [item, rental], data: { controller: "flatpickr" } do |f| %>
     <div class="form-inputs">
       <div class="form-group mb-3">
-        <%= f.input :start_date, input_html: { class: 'form-control' } %>
+        <%= f.input :start_date, as: :string, input_html: { data: { flatpickr_target: "startTime" }, class: "form-control" } %>
       </div>
       <div class="form-group mb-3">
-        <%= f.input :end_date, input_html: { class: 'form-control' } %>
+        <%= f.input :end_date, as: :string, input_html: { data: { flatpickr_target: "endTime" }, class: "form-control" } %>
       </div>
       <% if current_user.owner_of?(item) %>
         <div class="form-group mb-3">

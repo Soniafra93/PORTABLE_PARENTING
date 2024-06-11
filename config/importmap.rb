@@ -27,3 +27,4 @@ pin "suggestions", to: "https://ga.jspm.io/npm:suggestions@1.7.1/index.js"
 pin "xtend", to: "https://ga.jspm.io/npm:xtend@4.0.2/immutable.js"
 pin "@mapbox/mapbox-gl-geocoder", to: "https://ga.jspm.io/npm:@mapbox/mapbox-gl-geocoder@5.0.0/lib/index.js"
 
+pin "flatpickr", to: "https://ga.jspm.io/npm:flatpickr@4.6.13/dist/esm/index.js"
