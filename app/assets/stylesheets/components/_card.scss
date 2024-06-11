@@ -64,6 +64,12 @@
   text-decoration: none;
 }
 
+.card-trip .item-name:hover {
+  text-decoration: underline;
+  color: #5fbfc1;
+  cursor: pointer;
+}
+
 .card-trip-infos-inner .item-description {
   color: #555;
 }
