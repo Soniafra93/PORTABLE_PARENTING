@@ -1,0 +1,18 @@
+// Default styles for larger screens
+.rounded-start-outer {
+  border-top-left-radius: 18px;
+  border-bottom-left-radius: 18px;
+}
+
+.rounded-end-outer {
+  border-top-right-radius: 18px;
+  border-bottom-right-radius: 18px;
+}
+
+// Styles for smaller screens
+@media (max-width: 767.98px) {
+  .rounded-start-outer,
+  .rounded-end-outer {
+    border-radius: 18px;
+  }
+}
