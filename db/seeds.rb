@@ -13,6 +13,8 @@ require 'faker'
 
 puts "Destroying all items..."
 Item.destroy_all
+# puts "Destroying all users..."
+# User.destroy_all
 
 # Read the text file and split it into a hash of labeled URLs
 image_file_path = File.join(Rails.root, 'app', 'assets', 'image_urls.txt')
@@ -38,6 +40,31 @@ User.create([
   { first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: email_addresses[3], password: 'password4' },
   { first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: email_addresses[4], password: 'password5' }
 ])
+
+# Attach avatar photos to users
+# users = User.all
+# user_1 = users[30]
+# file = URI.open('https://res.cloudinary.com/dfq4g7tng/image/upload/v1718097954/person-5_cd2nfz.jpg')
+# user_1.photo.attach(io: file, filename: 'person-1.jpeg')
+# user_1.save!
+
+# Attach avatar photos to users
+users = User.all
+
+user_photos = [
+  'https://res.cloudinary.com/dfq4g7tng/image/upload/v1718097954/person-5_cd2nfz.jpg',
+  'https://res.cloudinary.com/dfq4g7tng/image/upload/v1718097953/person-4_tqooqu.jpg',
+  'https://res.cloudinary.com/dfq4g7tng/image/upload/v1718097951/person-3_tmcwd4.jpg',
+  'https://res.cloudinary.com/dfq4g7tng/image/upload/v1718097950/person-2_zvskex.jpg',
+  'https://res.cloudinary.com/dfq4g7tng/image/upload/v1718097949/person-1_wdjvbd.jpg'
+]
+
+users.each_with_index do |user, index|
+  file = URI.open(user_photos[index])
+    user.photo.attach(io: file, filename: "person-#{index + 1}.jpeg")
+    user.save!
+end
+
 
 # Define categories as an array of strings
 categories = ['Strollers', 'Car Seats', 'High Chairs', 'Baby Carriers', 'Baby Toys']
