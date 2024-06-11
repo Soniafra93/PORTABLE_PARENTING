@@ -28,13 +28,15 @@ body {
   border: none;
 }
 
-.typed-cursor, .typed-cursor::before {
+.typed-cursor,
+.typed-cursor::before {
   text-decoration: none;
   border: none;
 }
 
-
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -51,8 +53,8 @@ body {
   border-radius: 4px;
   background: $blue;
   transition: background 0.3s ease;
+  margin-left: 255px;
 }
-
 
 .lower-box {
   background-color: white;
