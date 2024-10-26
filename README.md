@@ -8,7 +8,7 @@
 - [Acknowledgments](#acknowledgments)
   
 ## Overview 
-Portable Parenting is a web application targeting parents who like to travel with their babies/toddlers while avoiding the struggles of carrying heavy luggages for their children. 
+Portable Parenting is a web application targeting parents who like to travel with their babies/toddlers while avoiding the struggles of carrying heavy luggages for their children. Parents can rent the items they need directly in their destinations on the app.
 
 ## Features
 - View calendars with upcoming activities.
